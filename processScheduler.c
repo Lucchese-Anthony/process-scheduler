@@ -1,10 +1,8 @@
 /* 	Author:			Anthony Lucchese
-	Program Name:		asgn5-lucchesea2.c
-	Compile and run:	gcc -o asgn5 asgn5.lucchesea2.c
+	Program Name:		processScheduler.c
+	Compile and run:	gcc -o processScheduler processScheduler.c
 
-	Description:	This program is built upon the previous assignment, 
-			doubly linked list, where we add an array of strings
-			and utilize time.h
+	Description:		init a process, and run it using execvp()
 */
 
 #include <stdio.h>
@@ -95,8 +93,8 @@ void createFork(Job *jobPtr) {
 	}
 	child_pid = fork();
 	if (child_pid == 0) {
-		execvp(argv[0], argv);
-		exit(1);
+		execvp(argv[0], argv);	// execute process
+		exit(1);		// exit if error
 	} else {
 		waitpid(child_pid, &status, WEXITED);
 	}
